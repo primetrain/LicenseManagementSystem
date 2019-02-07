@@ -1,13 +1,13 @@
 package com.alpha.licensemanagementsystem.licensemanagementsystem;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Import;
+import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
-
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-
+@EnableSwagger2WebMvc
+@Import({SpringDataRestConfiguration.class})
 @SpringBootApplication
 public class LicenseManagementSystemApplication {
 
