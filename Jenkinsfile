@@ -7,6 +7,7 @@ node('slave') {
         git credentialsId: '09eefd18-6e26-4f72-951a-a9c2eaa2dfa8',
                 url: 'https://github.com/primetrain/LicenseManagementSystem'
         mvnHome = tool 'M3'
+        sh "sudo systemctl stop license"
     }
 
     stage('Compile') {
@@ -30,10 +31,12 @@ node('slave') {
             sh "sudo mvn install -P env-dev"
         }
 
-        stage('restart service'){
+        stage('copy files'){
             sh "sudo cp target/final.jar ~/services/final.jar"
             sh "sudo chmod u+x '/home/ubuntu/services/final.jar'"
-            sh "sudo systemctl restart license"
         }
+    }
+    stage("start service"){
+        sh "sudo systemctl start license"
     }
 }
