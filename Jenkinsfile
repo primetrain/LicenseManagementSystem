@@ -16,7 +16,7 @@ node('slave') {
 
     stage('Test') {
         // Run the maven test
-        sh "mvn test"
+        sh "mvn test -P env-dev"
     }
 
     if (payload.ref == 'refs/heads/master') {
