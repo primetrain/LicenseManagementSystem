@@ -31,9 +31,9 @@ node('slave') {
         }
 
         stage('restart service'){
-            sh "cp target/final.jar ~/services/final.jar"
-            sh "chmod 500 '/home/ubuntu/services/final.jar'"
-            sh "sudo service license restart"
+            sh "sudo cp target/final.jar ~/services/final.jar"
+            sh "sudo chmod u+x '/home/ubuntu/services/final.jar'"
+            sh "sudo systemctl restart license"
         }
     }
 }
