@@ -159,6 +159,7 @@
 				<version>${spring-boot.version}</version>
 			</plugin>
 		</plugins>
+		<finalName>final</finalName>
 	</build>
 
 </project>
