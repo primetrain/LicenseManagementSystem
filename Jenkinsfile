@@ -11,7 +11,7 @@ node('slave') {
 
     stage('Compile') {
         // Run the maven compile
-        sh "'${mvnHome}/bin/mvn' clean compile -P prod"
+        sh "'${mvnHome}/bin/mvn' clean compile -P env-dev"
     }
 
     stage('Test') {
@@ -22,12 +22,12 @@ node('slave') {
     if (payload.ref == 'refs/heads/master') {
         stage('Package') {
             // Run the maven package
-            sh "'${mvnHome}/bin/mvn' package -P prod"
+            sh "'${mvnHome}/bin/mvn' package -P env-dev"
         }
 
         stage('Install') {
             // Run the maven package
-            sh "sudo '${mvnHome}/bin/mvn' install -P prod"
+            sh "sudo '${mvnHome}/bin/mvn' install -P env-dev"
         }
 
         stage('restart service'){
