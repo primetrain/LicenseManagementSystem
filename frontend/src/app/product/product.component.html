@@ -1,0 +1,12 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let product of products">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{ product.name }}</mat-panel-title>
+      <mat-panel-description>{{ product.description}}</mat-panel-description>
+    </mat-expansion-panel-header>
+    
+    <mat-card *ngFor="let module of product.modules" appModule>
+        {{ module.module }}
+    </mat-card>  
+  </mat-expansion-panel>
+</mat-accordion>
