@@ -11,13 +11,17 @@ import { ExternalService } from './_services/external.service';
 import { ProductComponent } from './product/product.component';
 import { ModuleComponent } from './module/module.component';
 import { ModuleDirective } from './directives/module.directive';
+import { PlanComponent } from './plan/plan.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     ModuleComponent,
-    ModuleDirective
+    ModuleDirective,
+    PlanComponent,
+    SubscriptionComponent
   ],
   imports: [
     BrowserModule,

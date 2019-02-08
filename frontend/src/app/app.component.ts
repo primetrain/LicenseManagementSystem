@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'LicenseManagementApplication';
-  
+  a = [1,2,3]
+
+  increment(){
+    this.a[0] += 1
+  }
 }
+
