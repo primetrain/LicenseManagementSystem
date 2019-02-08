@@ -4,7 +4,7 @@ import { Subscription } from './Subscription';
 
 export class Plan extends Resource{
     id: Number
-    description: String
+    description: String 
     products: Product[]
     subscriptions: Subscription[]
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanService } from '../_services/plan.service';
 import { Plan } from '../Resource/Plan';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plan',
@@ -10,7 +11,7 @@ import { Plan } from '../Resource/Plan';
 export class PlanComponent implements OnInit {
   plans: Plan[];
 
-  constructor(private planService: PlanService) { }
+  constructor(private planService: PlanService, private router: Router) { }
 
   ngOnInit() {
     this.planService
@@ -19,5 +20,13 @@ export class PlanComponent implements OnInit {
       this.plans = plans
     })
   }
+  
+  selectedplan(plan: Plan){
+    this.planService.subject.publish = plan;
+    this.router.navigate(["products"])
+  }
 
+  addToCart(event: Event){
+    event.stopPropagation()
+  }
 }

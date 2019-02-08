@@ -13,7 +13,7 @@ export class PlanService extends RestService<Plan>{
 
   s = new DataExchange<Plan>();
 
-  get subject (){
+  get subject () {
     return this.s;
   }
 }

@@ -1,4 +1,4 @@
-<mat-accordion>
+<!-- <mat-accordion>
   <mat-expansion-panel *ngFor="let product of products">
     <mat-expansion-panel-header>
       <mat-panel-title> {{ product.name }}</mat-panel-title>
@@ -9,4 +9,9 @@
         {{ module.module }}
     </mat-card>  
   </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
+<h1 appHeading>{{ currentPlan.description }}</h1>
+
+<mat-card appModule *ngFor="let product of products" (click)="selectedproduct(product)">
+  {{ product.name }} |  {{ product.description }}
+</mat-card>

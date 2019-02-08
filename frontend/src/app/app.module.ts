@@ -13,6 +13,8 @@ import { ModuleComponent } from './module/module.component';
 import { ModuleDirective } from './directives/module.directive';
 import { PlanComponent } from './plan/plan.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { HeadingDirective } from './directives/heading.directive';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     ModuleComponent,
     ModuleDirective,
     PlanComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    HeadingDirective,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
