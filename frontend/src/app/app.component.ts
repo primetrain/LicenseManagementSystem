@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'LicenseManagementApplication';
+  a = [1,2,3]
+
+  increment(){
+    this.a[0] += 1
+  }
 }
+
