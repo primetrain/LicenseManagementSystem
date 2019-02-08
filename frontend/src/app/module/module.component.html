@@ -1,3 +1,6 @@
-<p>
-  module works!
-</p>
+<h1 appHeading> {{ currentProduct.description }}</h1>
+
+<mat-card appModule *ngFor="let module of modules">
+  {{ module.module }} |
+  <span *ngFor="let language of module.languages">{{ language.language }}</span>
+</mat-card>

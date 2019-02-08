@@ -1,3 +1,7 @@
-<p>
-  plan works!
-</p>
+<mat-card *ngFor="let plan of plans" (click)="selectedplan(plan)" appModule>
+  <mat-card-content>
+      <span>{{ plan.description }}</span>
+      <span class="spacer"></span>
+        <button mat-raised-button color="primary" (click)="addToCart($event)"> ADD </button>
+  </mat-card-content>
+</mat-card>
