@@ -1,0 +1,56 @@
+<div class="top-header-dialog">
+    <div class="row" style="margin-left:0px;margin-right:0px">
+        <div class="col-sm-11 rwidth80">
+            <h1 mat-dialog-title style="text-transform: capitalize;padding-bottom: 0px; margin-bottom: 10px;">
+                <i class="fas fa-comment-alt"></i>&nbsp;Clients</h1>
+        </div>
+    </div>
+</div>
+    <div>    
+            <div class="container">
+                <div class="row">
+                            <div>
+                                <p-dataTable #dt [value]="getClient" [rowStyleClass]="isRowSelected" reorderableColumns="true" resizableColumns="true" [editable]="true" [rows]="5"
+                                [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb"  scrollable="true"  sortMode="multiple">
+                                <p-column field="" header="Row#" [style]="{width:'10px'}">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                {{i+1}}
+                                </ng-template>
+                                </p-column>
+                                <p-column field=""  [style]="{'width':'50px'}" header="">
+                                    <ng-template let-col let-event="rowData" pTemplate="body">
+                                        <input type="radio" name="global_document"  (click)="selectClient(event)">
+                                    </ng-template>
+                                    </p-column>
+                                <p-column [sortable]="true" field="id"  [style]="{'width':'50px'}" header="ID"></p-column>
+                                <p-column [sortable]="true" field="name" [style]="{'width':'150px'}" header="Name"></p-column>
+                                <p-column [sortable]="true" field="username" [style]="{'width':'100px'}" header="Username"></p-column>
+                                <p-column [sortable]="true" field="password" [style]="{'width':'100px'}" header="Password"></p-column>
+                                </p-dataTable>                            
+                            </div>            
+                </div>
+            </div>
+           <div class="col-lg-12">
+               <div class="col-lg-9">
+                   <div class="col-lg-3">
+                        <input type="button" value="Create" (click)="createClient()">
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="button" value="Update"  (click)="update()">
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="button" value="Delete"  (click)="delete()">
+                    </div>
+            </div> 
+        </div> 
+        <br>
+         <div *ngIf="createTrue"> 
+         <div class="col-lg-12">  
+        ID :      <input type="text" name="id" [(ngModel)]="client.id"><br> <br>
+        NAME:     <input type="text" name="name" [(ngModel)]="client.name"><br> <br>
+        USERNAME: <input type="text" name="username" [(ngModel)]="client.username"><br> <br>
+        PASSWORD: <input type="text" name="password" [(ngModel)]="client.password"><br>
+             <input type="button" value="Save"  (click)="save()">
+          </div>
+         </div>
+    </div>
