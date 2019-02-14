@@ -16,55 +16,53 @@ export class ClientComponent implements OnInit {
     checkActive: string = "Inactive";
     createTrue: boolean = false;
     getClient: Client[];
-   // currClient: Client;
     client: Client;
       constructor(private clientService: ClientService) { }
     ngOnInit(){
-         this.clientService.getAll().subscribe((client: Client[]) => {
+        this.clientService.getAll().subscribe((client: Client[]) => {
              this.getClient = client;
-            console.log("Clients"+JSON.stringify(this.getClient));
-    })
-
-       
+             console.log("Clients"+JSON.stringify(this.getClient));
+        })       
     }
-selectClient(entry){
-    this.checkActive = "Active";
-    alert(JSON.stringify(entry));
-    this.client = entry;
+    selectClient(entry){
+        this.checkActive = "Active";
+        this.client = entry;
     }
-createClient(){
-    this.createTrue = true;
-    this.currentAction = "Create";
-    this.client = this.clientService.getterClient();
-  
-}
-update(){
-    if(this.checkActive == "Active"){
-    this.currentAction = "Update";
-    this.createTrue = true;
-     alert(JSON.stringify(this.client));
-
+    createClient(){
+        this.createTrue = true;
+        this.currentAction = "Create";
+        this.client = this.clientService.getterClient();
+    
     }
-    else{
-        alert("Please select a client to update.");
+    update(){
+        if(this.checkActive == "Active"){
+            this.currentAction = "Update";
+            this.createTrue = true;
+        }
+        else{
+            alert("Please select a client to update.");
+        }
     }
-   }
-   save(){
-       if(this.currentAction == "Create"){
-     //  this.client = this.clientService.getterClient();
-    // this.getClient = this.client;
-      alert(JSON.stringify(this.client));
-    this.clientService.create(this.client).subscribe((client: Client) => {
-      this.client = client;
-      console.log("Clients"+JSON.stringify(this.client));
-    })
-       }
-       if(this.currentAction == "Update"){
-              alert(JSON.stringify(this.client));
-this.clientService.update(this.client).subscribe((client: Client) => {
-      this.client = client;
-      console.log("Clients"+JSON.stringify(this.client));
-    })
-       }
-   }
+    save(){
+        if(this.currentAction == "Create"){        
+            this.clientService.create(this.client).subscribe((client: Client) => {
+                console.log("Clients"+JSON.stringify(this.client));
+            })
+        }
+        if(this.currentAction == "Update"){
+            this.clientService.update(this.client).subscribe((client: Client) => {
+                console.log("Clients"+JSON.stringify(this.client));
+                })
+        }
+    }
+    delete(){
+        if(this.checkActive == "Active"){
+            this.clientService.delete(this.client).subscribe((client: Client) => {
+                 console.log("Clients"+JSON.stringify(this.client));
+            })
+        }
+        else{
+            alert("Please select a client to delete.");
+        }
+    }
 }
