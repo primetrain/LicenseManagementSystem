@@ -5,6 +5,7 @@ import {TableModule} from 'primeng/table';
 
 
 
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -17,12 +18,14 @@ export class ClientComponent implements OnInit {
     createTrue: boolean = false;
     getClient: Client[];
     client: Client;
-      constructor(private clientService: ClientService) { }
+    constructor(private clientService: ClientService) { }
+
     ngOnInit(){
         this.clientService.getAll().subscribe((client: Client[]) => {
              this.getClient = client;
              console.log("Clients"+JSON.stringify(this.getClient));
-        })       
+        })  
+        this.client = this.clientService.getterClient();       
     }
     selectClient(entry){
         this.checkActive = "Active";
@@ -31,8 +34,7 @@ export class ClientComponent implements OnInit {
     createClient(){
         this.createTrue = true;
         this.currentAction = "Create";
-        this.client = this.clientService.getterClient();
-    
+        this.client = this.clientService.getterClient();    
     }
     update(){
         if(this.checkActive == "Active"){
@@ -44,6 +46,7 @@ export class ClientComponent implements OnInit {
         }
     }
     save(){
+       // alert(JSON.stringify(this.event));
         if(this.currentAction == "Create"){        
             this.clientService.create(this.client).subscribe((client: Client) => {
                 console.log("Clients"+JSON.stringify(this.client));

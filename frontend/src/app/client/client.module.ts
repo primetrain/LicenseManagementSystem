@@ -4,6 +4,8 @@ import { ClientComponent } from './client.component';
 import {DataTableModule} from 'primeng/datatable';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 const routes: Routes = [
   {
     path: "client",
@@ -16,10 +18,11 @@ const routes: Routes = [
     
   ],
   imports: [RouterModule.forRoot(routes),
+  ModalModule.forRoot(),
   DataTableModule,
   FormsModule,
   CommonModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule,ModalModule]
 })
 export class ClientModule { }
