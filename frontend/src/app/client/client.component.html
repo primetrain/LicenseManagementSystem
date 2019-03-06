@@ -1,0 +1,87 @@
+<div class="top-header-dialog">
+    <div class="row" style="margin-left:0px;margin-right:0px">
+        <div class="col-sm-11 rwidth80">
+            <h1 mat-dialog-title style="text-transform: capitalize;padding-bottom: 0px; margin-bottom: 10px;">
+                <i class="fas fa-comment-alt"></i>&nbsp;Clients</h1>
+        </div>
+    </div>
+</div>
+    <div>    
+            <div class="container">
+                <div class="row">
+                            <div>
+                                <p-dataTable #dt [value]="getClient" [rowStyleClass]="isRowSelected" reorderableColumns="true" resizableColumns="true" [editable]="true" [rows]="5"
+                                [paginator]="true" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb"  scrollable="true"  sortMode="multiple">
+                                <p-column field="" header="Row#" [style]="{width:'10px'}">
+                                <ng-template let-i="rowIndex" pTemplate="body">
+                                {{i+1}}
+                                </ng-template>
+                                </p-column>
+                                <p-column field=""  [style]="{'width':'50px'}" header="">
+                                    <ng-template let-col let-event="rowData" pTemplate="body">
+                                        <input type="radio" name="global_document"  (click)="selectClient(event)">
+                                    </ng-template>
+                                    </p-column>
+                                <p-column [sortable]="true" field="id"  [style]="{'width':'50px'}" header="ID"></p-column>
+                                <p-column [sortable]="true" field="name" [style]="{'width':'150px'}" header="Name"></p-column>
+                                <p-column [sortable]="true" field="username" [style]="{'width':'100px'}" header="Username"></p-column>
+                                <p-column [sortable]="true" field="password" [style]="{'width':'100px'}" header="Password"></p-column>
+                                </p-dataTable>                            
+                            </div>            
+                </div>
+          <div class="row">
+           <div class="btn-toolbar">
+    
+                   <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-primary"  (click)="createClient()" data-toggle="modal" data-target="#exampleModal">
+                        Create
+                        </button>
+                    </div>
+                    <div class="btn-group mr-2">
+                         <button type="button" class="btn btn-primary"  (click)="update()" data-toggle="modal" data-target="#exampleModal">
+                        Update
+                        </button>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+                    </div>
+       
+        </div> 
+    </div><!--row -->
+    </div><!--Container -->
+    </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add/Update Client</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="form-group">
+           <label >Name:</label>
+           <input type="text" name="name" class="form-control" [(ngModel)]="client.name"  >
+       </div>
+        <div class="form-group">
+           <label >USERNAME:</label>
+           <input type="text" name="username" class="form-control" [(ngModel)]="client.username"  >
+        </div>
+        <div class="form-group">
+           <label >PASSWORD:</label>
+           <input type="text" name="password" class="form-control" [(ngModel)]="client.password" >
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  (click)="save($entry)">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+

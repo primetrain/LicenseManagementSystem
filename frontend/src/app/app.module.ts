@@ -15,6 +15,7 @@ import { PlanComponent } from './plan/plan.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { HeadingDirective } from './directives/heading.directive';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ClientModule } from './client/client.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AngularHalModule.forRoot()
+    AngularHalModule.forRoot(),
+    ClientModule
   ],
   providers: [
     { provide: 'ExternalConfigurationService', useClass: ExternalService  }
