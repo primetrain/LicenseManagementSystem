@@ -7,6 +7,18 @@ node('master') {
         git url: 'https://github.com/primetrain/LicenseManagementSystem'
     }
 
+    stage("install dependencies") {
+        sh "npm install"
+    }
+
+    stage('Run Angular Tests') {
+        sh "npm test"
+    }
+
+    stage("Build Angular Project") {
+        sh "npm build"
+    }
+
     stage('Compile') {
         // Run the maven compile
         sh "mvn clean compile -P env-dev"
