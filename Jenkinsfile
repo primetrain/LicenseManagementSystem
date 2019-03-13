@@ -1,7 +1,7 @@
 node('master') {
     def payload = readJSON text:"$payload"
     env.APPLICATION_SERVER = '188.166.81.26'
-    echo payload
+    echo payload.ref
     stage('Preparation') {
         // Maven
         git url: 'https://github.com/primetrain/LicenseManagementSystem'
