@@ -8,7 +8,7 @@ node('master') {
     }
 
     stage("install dependencies") {
-        sh "npm install"
+        sh "cd frontend && npm install"
     }
 
     stage('Run Angular Tests') {
@@ -16,7 +16,7 @@ node('master') {
     }
 
     stage("Build Angular Project") {
-        sh "npm build"
+        sh "npm build && cd .."
     }
 
     stage('Compile') {
