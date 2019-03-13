@@ -11,9 +11,9 @@ node('master') {
         sh "cd frontend && npm install"
     }
 
-    stage('Run Angular Tests') {
-        sh "cd frontend && npm test"
-    }
+    // stage('Run Angular Tests') {
+    //     sh "cd frontend && npm test"
+    // }
 
     stage("Build Angular Project") {
         sh "cd frontend && npm build"
