@@ -16,7 +16,7 @@ node('master') {
     // }
 
     stage("Build Angular Project") {
-        sh "cd frontend && npm build"
+        sh "cd frontend && npm run-script build"
     }
 
     stage('Compile') {
