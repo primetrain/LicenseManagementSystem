@@ -12,11 +12,11 @@ node('master') {
     }
 
     stage('Run Angular Tests') {
-        sh "npm test"
+        sh "cd frontend && npm test"
     }
 
     stage("Build Angular Project") {
-        sh "npm build && cd .."
+        sh "cd frontend && npm build"
     }
 
     stage('Compile') {
