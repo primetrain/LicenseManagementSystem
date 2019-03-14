@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  roles:
+    - { role: nginx, tags: [nginx] }
+    - { role: java, tags: [java] }
+    - { role: maven, tags: [maven] }
+    - { role: nodejs, tags: [ nodejs ] }
+
+- hosts: ci_server
+  become: yes
+  roles:
+    - { role: jenkins, tags: [jenkins] }
