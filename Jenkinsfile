@@ -1,10 +1,22 @@
 node('master') {
     def payload = readJSON text:"$payload"
     env.APPLICATION_SERVER = '188.166.81.26'
-
+    echo payload.ref
     stage('Preparation') {
         // Maven
         git url: 'https://github.com/primetrain/LicenseManagementSystem'
+    }
+
+    stage("install dependencies") {
+        sh "cd frontend && npm install"
+    }
+
+    // stage('Run Angular Tests') {
+    //     sh "cd frontend && npm test"
+    // }
+
+    stage("Build Angular Project") {
+        sh "ls && cd frontend && npm run-script build"
     }
 
     stage('Compile') {
