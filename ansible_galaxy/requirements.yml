@@ -1,0 +1,20 @@
+- src: geerlingguy.nginx
+  version: 2.6.2
+  name: nginx
+
+- src: geerlingguy.java
+  version: 1.9.5
+  name: java
+
+- src: gantsign.maven
+  version: 5.3.0
+  name: maven
+
+- src: geerlingguy.nodejs
+  version: 5.0.0
+  name: nodejs
+
+- src: geerlingguy.jenkins
+  version: 3.7.0
+  name: jenkins
+

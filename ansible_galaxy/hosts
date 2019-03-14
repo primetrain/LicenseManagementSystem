@@ -1,0 +1,6 @@
+all:
+  hosts:
+    application_server:
+      ansible_host: 188.166.81.26
+    ci_server:
+      ansible_host: 188.166.79.222
